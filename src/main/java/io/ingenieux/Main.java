@@ -1,10 +1,11 @@
 package io.ingenieux;
 
-import io.ingenieux.resources.HealthCheckResource;
-
 import io.dropwizard.Application;
+import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
+import io.dropwizard.configuration.SubstitutingSourceProvider;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
+import io.ingenieux.resources.HealthCheckResource;
 
 public class Main extends Application<ServiceConfiguration> {
 
@@ -19,6 +20,7 @@ public class Main extends Application<ServiceConfiguration> {
 
   @Override
   public void initialize(Bootstrap<ServiceConfiguration> bootstrap) {
+    bootstrap.setConfigurationSourceProvider(new SubstitutingSourceProvider(bootstrap.getConfigurationSourceProvider(), new EnvironmentVariableSubstitutor()));
   }
 
   @Override

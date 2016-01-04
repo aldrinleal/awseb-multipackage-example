@@ -1,0 +1,1 @@
+web: bash -x ./bin/app.sh server config-aws.yml

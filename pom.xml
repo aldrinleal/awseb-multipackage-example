@@ -16,17 +16,14 @@
 
         <beanstalker.region>us-east-1</beanstalker.region>
 
-        <environmentName>${project.artifactId}-prod</environmentName>
+        <beanstalk.applicationName>multipackage-example</beanstalk.applicationName>
 
-        <beanstalk.applicationName>${project.artifactId}</beanstalk.applicationName>
-
-        <beanstalk.environmentName>${environmentName}</beanstalk.environmentName>
-        <beanstalk.cnamePrefix>${environmentName}</beanstalk.cnamePrefix>
-        <beanstalk.environmentRef>${environmentName}.elasticbeanstalk.com
-        </beanstalk.environmentRef>
+        <beanstalk.environmentName>multipackage-example</beanstalk.environmentName>
+        <beanstalk.cnamePrefix>multipackage-example-prod</beanstalk.cnamePrefix>
+        <beanstalk.environmentRef>multipackage-example-prod.elasticbeanstalk.com</beanstalk.environmentRef>
 
         <beanstalk.useStagingDirectory>true</beanstalk.useStagingDirectory>
-        <beanstalk.solutionStack>64bit Amazon Linux 201* v* running Docker *</beanstalk.solutionStack>
+        <beanstalk.solutionStack>64bit Amazon Linux 2015.09 v2.0.4 running Java 8</beanstalk.solutionStack>
         <beanstalk.applicationHealthCheckURL>/health/check</beanstalk.applicationHealthCheckURL>
         <beanstalk.environmentType>SingleInstance</beanstalk.environmentType>
 
@@ -83,9 +80,10 @@
                     <inherited>true</inherited>
                     <version>1.4.2</version>
                     <configuration>
-                    	<tags>
-                    		<Uses>ingenieux Beanstalker at http://beanstalker.ingenieux.com.br/</Uses>
-                    	</tags>
+                        <tags>
+                            <Uses>ingenieux Beanstalker at http://beanstalker.ingenieux.com.br/
+                            </Uses>
+                        </tags>
                     </configuration>
                 </plugin>
             </plugins>
@@ -101,8 +99,12 @@
                 <maven.deploy.skip>true</maven.deploy.skip>
                 <maven.build.timestamp.format>yyyyMMddHHmmss</maven.build.timestamp.format>
                 <beanstalk.versionLabel>${maven.build.timestamp}</beanstalk.versionLabel>
-                <beanstalk.s3Key>apps/${project.artifactId}/${project.build.finalName}-${beanstalk.versionLabel}.zip</beanstalk.s3Key>
-                <beanstalk.artifactFile>${project.build.directory}/${project.build.finalName}-bin.zip</beanstalk.artifactFile>
+                <beanstalk.s3Key>
+                    apps/${project.artifactId}/${project.build.finalName}-${beanstalk.versionLabel}.zip
+                </beanstalk.s3Key>
+                <beanstalk.artifactFile>
+                    ${project.build.directory}/${project.build.finalName}-bin.zip
+                </beanstalk.artifactFile>
                 <beanstalk.tag.DeployedInto>Production</beanstalk.tag.DeployedInto>
             </properties>
             <build>
