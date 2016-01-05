@@ -78,7 +78,7 @@
                     <groupId>br.com.ingenieux</groupId>
                     <artifactId>beanstalk-maven-plugin</artifactId>
                     <inherited>true</inherited>
-                    <version>1.4.2-SNAPSHOT</version>
+                    <version>1.4.3-SNAPSHOT</version>
                     <configuration>
                         <tags>
                             <Uses>ingenieux Beanstalker at http://beanstalker.ingenieux.com.br/
