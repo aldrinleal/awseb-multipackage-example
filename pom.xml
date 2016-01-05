@@ -78,7 +78,7 @@
                     <groupId>br.com.ingenieux</groupId>
                     <artifactId>beanstalk-maven-plugin</artifactId>
                     <inherited>true</inherited>
-                    <version>1.4.2</version>
+                    <version>1.4.2-SNAPSHOT</version>
                     <configuration>
                         <tags>
                             <Uses>ingenieux Beanstalker at http://beanstalker.ingenieux.com.br/
@@ -178,10 +178,12 @@
                                 <id>deploy</id>
                                 <phase>deploy</phase>
                                 <goals>
-                                    <goal>upload-source-bundle</goal>
-                                    <goal>create-application-version</goal>
-                                    <goal>put-environment</goal>
+                                    <goal>codecommit-fast-deploy</goal>
                                 </goals>
+                                <configuration>
+                                    <sourceDirectory>target/appassembler</sourceDirectory>
+                                    <repoName>ingenieux-image-blobs</repoName>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
